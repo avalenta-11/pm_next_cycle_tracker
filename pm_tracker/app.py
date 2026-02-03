@@ -4,8 +4,13 @@ import requests
 import webbrowser
 import threading
 import time
+import os
 
-app = Flask(__name__)
+# This finds the folder where this app.py lives
+base_dir = os.path.abspath(os.path.dirname(__file__))
+template_dir = os.path.join(base_dir, 'templates')
+
+app = Flask(__name__, template_folder=template_dir)
 CORS(app)
 
 # Fix Vue.js/Jinja2 conflict (if needed in future)
